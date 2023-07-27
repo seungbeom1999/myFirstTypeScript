@@ -1,26 +1,67 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import styled from "styled-components";
+import Input from "./components/Input";
+import TodoList from "./components/TodoList";
 
 function App() {
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      title: "제목1",
+      contents: "내용1",
+      isDone: false,
+    },
+    {
+      id: 2,
+      title: "제목2",
+      contents: "내용2",
+      isDone: false,
+    },
+    {
+      id: 3,
+      title: "제목3",
+      contents: "내용3",
+      isDone: true,
+    },
+    {
+      id: 4,
+      title: "제목4",
+      contents: "내용4",
+      isDone: false,
+    },
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <StHeader>헤더입니다.</StHeader>
+      <StMain>
+        메인입니다.
+        <Input todos={todos} setTodos={setTodos} />
+        <div>
+          <h1>List 영역</h1>
+          <TodoList todos={todos} setTodos={setTodos} listIsDone={false} />
+          <TodoList todos={todos} setTodos={setTodos} listIsDone={true} />
+        </div>
+      </StMain>
+      <StFooter>푸터입니다.</StFooter>
     </div>
   );
 }
 
 export default App;
+
+const StHeader = styled.header`
+  background-color: #f7e9c3;
+  padding: 10px;
+`;
+
+const StMain = styled.main`
+  background-color: #d9f7c3;
+  padding: 10px;
+`;
+
+const StFooter = styled.footer`
+  background-color: #c3e9f7;
+  padding: 10px;
+`;
