@@ -1,25 +1,22 @@
 import useInput from "../hook/useInput";
 import React from "react";
-import { DataBase, event } from "../model/DataBase";
-interface Props {
-  todos: DataBase[];
-  setTodos: (todos: DataBase[]) => void;
-}
+import { Props, Todo, event } from "../model/DataBase";
+interface TodoProps extends Props {}
 
-const Input: React.FC<Props> = ({ todos, setTodos }) => {
-  const [title, setTitle] = useInput("");
-  const [contents, setContents] = useInput("");
+const Input: React.FC<TodoProps> = ({ todos, setTodos }) => {
+  const [title, setTitle, fixTitle] = useInput("");
+  const [contents, setContents, fixContents] = useInput("");
   const postHandleButton = (e: event) => {
     e.preventDefault();
-    const newTodo: DataBase = {
+    const newTodo: Todo = {
       id: crypto.randomUUID(),
       title,
       contents,
       isDone: false,
     };
     setTodos([...todos, newTodo]);
-    setTitle("");
-    setContents("");
+    fixTitle("");
+    fixContents("");
   };
   return (
     <div>

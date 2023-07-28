@@ -3,10 +3,10 @@ import "./App.css";
 import styled from "styled-components";
 import Input from "./components/Input";
 import TodoList from "./components/TodoList";
-import { DataBase } from "./model/DataBase";
+import { Todo } from "./model/DataBase";
 
 function App() {
-  const [todos, setTodos] = useState<DataBase[]>([
+  const [todos, setTodos] = useState<Todo[]>([
     {
       id: "1",
       title: "제목1",

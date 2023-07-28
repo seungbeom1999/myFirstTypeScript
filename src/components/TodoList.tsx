@@ -1,12 +1,12 @@
 import React from "react";
 import { styled } from "styled-components";
-import { DataBase } from "../model/DataBase";
-interface Props {
-  todos: DataBase[];
-  setTodos: (todos: DataBase[]) => void;
+import { Props, Todo } from "../model/DataBase";
+
+interface TodoProps extends Omit<Props, "listIsDone"> {
   listIsDone: boolean;
 }
-const TodoList: React.FC<Props> = ({ todos, setTodos, listIsDone }) => {
+
+const TodoList: React.FC<TodoProps> = ({ todos, setTodos, listIsDone }) => {
   const cancelHandleButton = (id: string) => {
     const updateTodos = todos.map((item) => {
       if (item.id === id) {
