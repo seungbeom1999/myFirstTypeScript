@@ -37,10 +37,8 @@ function App() {
     <div>
       <StHeader>헤더입니다.</StHeader>
       <StMain>
-        메인입니다.
         <Input todos={todos} setTodos={setTodos} />
         <div>
-          <h1>List 영역</h1>
           <TodoList todos={todos} setTodos={setTodos} listIsDone={false} />
           <TodoList todos={todos} setTodos={setTodos} listIsDone={true} />
         </div>

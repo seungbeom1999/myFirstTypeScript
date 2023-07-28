@@ -1,8 +1,13 @@
 import React from "react";
 import { styled } from "styled-components";
-
-function TodoList({ todos, setTodos, listIsDone }) {
-  const cancelHandleButton = (id) => {
+import { DataBase } from "../model/DataBase";
+interface Props {
+  todos: DataBase[];
+  setTodos: (todos: DataBase[]) => void;
+  listIsDone: boolean;
+}
+const TodoList: React.FC<Props> = ({ todos, setTodos, listIsDone }) => {
+  const cancelHandleButton = (id: string) => {
     const updateTodos = todos.map((item) => {
       if (item.id === id) {
         return { ...item, isDone: !item.isDone };
@@ -12,7 +17,7 @@ function TodoList({ todos, setTodos, listIsDone }) {
     });
     setTodos(updateTodos);
   };
-  const deleteHandleButton = (id) => {
+  const deleteHandleButton = (id: string) => {
     const deleteTodos = todos.filter((item) => item.id !== id);
     setTodos(deleteTodos);
   };
@@ -42,7 +47,7 @@ function TodoList({ todos, setTodos, listIsDone }) {
       </div>
     </>
   );
-}
+};
 
 export default TodoList;
 

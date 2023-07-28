@@ -24,9 +24,9 @@ const Input: React.FC<Props> = ({ todos, setTodos }) => {
   return (
     <div>
       <form onSubmit={postHandleButton}>
-        <input type="text" value={title} onChange={setTitle} />
-        <input type="text" value={contents} onChange={setContents} />
-
+        타이틀: <input type="text" value={title} onChange={setTitle} /> <br />
+        내용: <input type="text" value={contents} onChange={setContents} />
+        <br />
         <button>입력</button>
       </form>
     </div>
